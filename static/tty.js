@@ -86,7 +86,7 @@ tty.open = function() {
 
   tty.socket.on('connect', function() {
     tty.reset();
-    new Window;
+    //new Window;
     tty.emit('connect');
   });
 
