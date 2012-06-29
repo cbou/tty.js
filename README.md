@@ -38,12 +38,16 @@ tty.js is an app, but it's also possible to hook into it programatically
 ``` js
 var tty = require('tty.js');
 
+var MemoryStore = express.session.MemoryStore;
+var sessionStore = new MemoryStore();
+
 var app = tty.createServer({
   shell: 'bash',
   users: {
     foo: 'bar'
   },
-  port: 8000
+  port: 8000,
+  sessionStore: sessionStore
 });
 
 app.get('/foo', function(req, res, next) {
