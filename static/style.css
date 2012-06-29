@@ -42,10 +42,13 @@ body {
  */
 
 .window {
-  padding-top: 15px;
+  /* This was for the bar */
+  /*padding-top: 15px;*/
+
   border: #fafafa solid 1px;
   background: #272829;
-  position: absolute;
+  /* not dragable anymore */
+  /*position: absolute;*/
   top: 20px;
   left: 20px;
   z-index: 1000;
@@ -62,6 +65,9 @@ body {
 }
 
 .bar {
+  /* We do not need the bar */
+  display:none;
+
   position: absolute;
   top: 0;
   left: 0;
