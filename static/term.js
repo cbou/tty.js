@@ -198,6 +198,8 @@ function Terminal(cols, rows, handler) {
     this.lines.push(this.blankLine());
   }
 
+  this.keysBound = false;
+
   this.tabs;
   this.setupStops();
 }
@@ -318,7 +320,7 @@ Terminal.prototype.focus = function() {
  */
 
 Terminal.bindKeys = function() {
-  if (Terminal.focus) return;
+  if (Terminal.keysBound) return;
 
   on(document, 'keydown', function(ev) {
     if (typeof Terminal.focus === 'object') {
@@ -331,6 +333,8 @@ Terminal.bindKeys = function() {
       return Terminal.focus.keyPress(ev);
     }
   }, true);
+
+  Terminal.keysBound = true;
 };
 
 /**
