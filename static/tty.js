@@ -176,10 +176,10 @@ tty.toggleLights = function() {
  * Window
  */
 
-function Window(socket, serverId) {
+function Window(socket, customOptions) {
   var self = this;
 
-  self.serverId = serverId;
+  self.customOptions = customOptions;
 
   EventEmitter.call(this);
 
@@ -612,9 +612,7 @@ function Tab(win, socket) {
 
   win.tabs.push(this);
 
-  var options = {serverId: win.serverId};
-
-  this.socket.emit('create', cols, rows, options, function(err, data) {
+  this.socket.emit('create', cols, rows, win.customOptions, function(err, data) {
     if (err) return self._destroy();
     self.pty = data.pty;
     self.id = data.id;
